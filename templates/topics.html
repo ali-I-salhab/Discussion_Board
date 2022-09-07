@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}
+
+{{board.name}}
+
+{% endblock title %}
+        {% block headd %}
+        
+        <li class="breadcrumb-item "><a href='{% url 'home'%}'>Boards</a></li>
+  <li class="breadcrumb-item active">{{board.name}}</li> 
+
+        {% endblock headd %}
+        {% block content %}
+
+
+        <a href='{% url 'new-topic' board.id %}' class="btn btn-primary"> New Topic</a>
+    
+      
+        <table class='table'>
+
+
+<thead class='thead-dark'>
+
+<tr>
+
+
+<th>Topic</th><th>creted by</th>
+<th>posts</th>
+<th>Views</th>
+<th>creted at</th>
+
+</tr>
+
+
+</thead>
+<tbody>
+{% for b in board.topics.all  %}
+
+<tr>
+
+      <td>{{b.subject}}</td>
+      <td>{{b.created_by.username}}</td>
+      <td>{{b.board.}}</td>
+      <td>_</td>
+      <td>{{b.created_at}}</td>
+</tr>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+</tbody>
+
+
+
+
+
+
+        </table>
+        
+        {% endblock content %}
