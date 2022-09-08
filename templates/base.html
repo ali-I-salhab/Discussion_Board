@@ -4,38 +4,36 @@
 
 <html>
   <head>
-
     <meta charset="utf-8" />
- <title>{% block title %}{% endblock title %}</title>
- <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}" />
-
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}" />
   </head>
 
   <body>
+    {% block body %}
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Django Boards</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#"> {{ user.username }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="container">
-      <ol class ="breadcrumb my-4">
-
-
-        {% block headd %}
-        
-        
-        {% endblock headd %}
+      <ol class="breadcrumb my-4">
+        {% block headd %} {% endblock headd %}
       </ol>
 
-{% block content %}
+      {% block content %} {% endblock content %}
+    </div>
 
-
-{% endblock content %}
-
-
-
-
-
-      </div>
-
-
-
-
-
-      </body>
-    </html>
+    {% endblock body %}
+  </body>
+</html>
